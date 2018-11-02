@@ -87,14 +87,13 @@ namespace FinalWebProject
         {
             using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
             {
-                string query = "SELECT UserName FROM Users where userName=@user";
+                string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
                 OleDbCommand command = new OleDbCommand(query, conn);
                 command.Parameters.AddWithValue("@user", userTextBox.Text);
+                command.Parameters.AddWithValue("@email", emailTextBox.Text);
                 conn.Open();
                 OleDbDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                    return true;
-                return false;
+                return reader.Read();
             }
         }
 
