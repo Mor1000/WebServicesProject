@@ -1,0 +1,56 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="FinalWebProject.Register" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="RegisterStyle.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:TextBox ID="userTextBox" placeHolder="user name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" EnableClientScript="false" ControlToValidate="userTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*user required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="passwordTextBox" placeHolder="password" TextMode="Password" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" EnableClientScript="false" ControlToValidate="passwordTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*password required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="confirmPasswordTextBox" placeHolder="confirm password" TextMode="Password" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" EnableClientScript="false" ControlToValidate="confirmPasswordTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*confirm password required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="emailTextBox" placeHolder="email" runat="server" CssClass="accountTextboxes" TextMode="Email"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" EnableClientScript="false" ControlToValidate="emailTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*email required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="birthDate" placeHolder="birthdate" TextMode="Date" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ValidationGroup="signUp" CssClass="requirements">*birthdate required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="nameTextBox" placeHolder="first name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="nameRequired" runat="server" ControlToValidate="nameTextBox" EnableClientScript="False" CssClass="requirements">*Name Required</asp:RequiredFieldValidator>
+            <br />
+
+            <asp:TextBox ID="lastNameTextBox" placeHolder="last name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="lastNameRequired" runat="server" ControlToValidate="lastNameTextBox" EnableClientScript="False" CssClass="requirements">*Last name required</asp:RequiredFieldValidator>
+            <br />
+            <asp:RangeValidator ID="RangeValidator1" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ErrorMessage="date is out of range" Type="Date" MinimumValue="02/10/1999" MaximumValue="24/10/2007" ValidationGroup="signUp" CssClass="validations"></asp:RangeValidator>
+            <br />
+            <asp:CustomValidator ID="CustomValidatorPassword" ControlToValidate="passwordTextBox" EnableClientScript="false" OnServerValidate="CheckChars" runat="server" ErrorMessage="password should have more than 4 chars" ControlToCompare="passwordTextBox" ValidationGroup="signUp" CssClass="validations"></asp:CustomValidator>
+            <br />
+            <asp:CustomValidator ID="CustomValidator1" runat="server" OnServerValidate="CheckChars" ErrorMessage="user should have more than 4 chars" EnableClientScript="False" ControlToValidate="userTextBox" ValidationGroup="signUp" CssClass="validations"></asp:CustomValidator>
+            <br />
+            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="confirmPasswordTextBox" ControlToCompare="passwordTextBox" EnableClientScript="False" ValidationGroup="signUp" ErrorMessage="passwords don't match" CssClass="validations"></asp:CompareValidator>
+            <br />
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" EnableClientScript="false" ControlToValidate="emailTextBox" runat="server" ErrorMessage="email not valid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUp" CssClass="validations"></asp:RegularExpressionValidator>
+            <br />
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+            <asp:Button ID="signUpButton" runat="server" OnClick="SignUpClick" Text="Sign Up!" ValidationGroup="signUp" Height="30px" Style="margin-top: 0px" UseSubmitBehavior="False" Width="80px" CssClass="buttons" />
+            <asp:Button ID="clearButton" runat="server" OnClick="OnClearClick" Text="Clear All" Height="30px"  Width="80px" CssClass="buttons" />
+        </div>
+    </form>
+</body>
+</html>

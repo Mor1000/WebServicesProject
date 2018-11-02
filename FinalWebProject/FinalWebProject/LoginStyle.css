@@ -1,0 +1,36 @@
+﻿body {
+}
+#userLabel{
+    position:absolute;
+    top:30px;
+}
+#passwordLabel{
+    position:absolute;
+    top:70px;
+}
+#userTextBox{
+    position:absolute;
+    top:28px;
+    left:110px;
+}
+#passwordTextBox{
+    position:absolute;
+    top:68px;
+    left:110px;
+}
+.buttons{
+    background-color:coral;
+    margin-top:120px;
+    margin-left:40px;
+    padding:8px;
+}
+#userRequired{
+    position:absolute;
+    top:30px;
+    left: 300px;
+}
+#passwordRequired{
+    position:absolute;
+    top:70px;
+    left: 300px;
+}
