@@ -98,31 +98,15 @@ namespace FinalWebProject
         /// </returns>
         public bool IsAlreadyExistsUser()
         {
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-                {
-                    string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
-                    OleDbCommand command = new OleDbCommand(query, conn);
-                    command.Parameters.AddWithValue("@user", userTextBox.Text);
-                    command.Parameters.AddWithValue("@email", emailTextBox.Text);
-                    conn.Open();
-                    OleDbDataReader reader = command.ExecuteReader();
-                    return reader.Read();
-                }
-            }
-            catch (OleDbException ex)
-            {
-                Debug.WriteLine("Error occured: " + ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Error occured: " + ex.Message + ": " + ex.GetType());
-                Debug.WriteLine(ex.StackTrace);
-                throw;
-            }
+            OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString());
+
+            string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
+            OleDbCommand command = new OleDbCommand(query, conn);
+            command.Parameters.AddWithValue("@user", userTextBox.Text);
+            command.Parameters.AddWithValue("@email", emailTextBox.Text);
+            conn.Open();
+            OleDbDataReader reader = command.ExecuteReader();
+            return reader.Read();
         }
 
         /// <summary>
