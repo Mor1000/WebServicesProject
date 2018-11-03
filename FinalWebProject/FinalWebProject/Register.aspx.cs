@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -44,36 +45,48 @@ namespace FinalWebProject
         /// <param name="e"></param>
         protected void SignUpClick(object sender, EventArgs e)
         {
-
-            if (!IsAlreadyExistsUser())
+            try
             {
-                /*loading all the validators from the "signUp" validation group
-                 * and checking if they are all valid.*/
-                Validate("signUp"); 
-                if (IsValid)   
-                    //The database connection in the using block will be automatically closed in any event.      
-                    using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-                    {
-                        string query = "INSERT INTO Users VALUES(@user, @password, @email, @birthdate, @name, @lastName)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
-                        OleDbCommand command = new OleDbCommand(query, conn);
-                        //defining the query's parameters.
-                        command.Parameters.AddWithValue("@user", userTextBox.Text);
-                        command.Parameters.AddWithValue("@password", passwordTextBox.Text);
-                        command.Parameters.AddWithValue("@email", emailTextBox.Text);
-                        command.Parameters.AddWithValue("@birthdate", birthDate.Text);
-                        command.Parameters.AddWithValue("@name", nameTextBox.Text);
-                        command.Parameters.AddWithValue("@lastName", lastNameTextBox.Text);
-                        conn.Open();
-                        int reader = command.ExecuteNonQuery();//executing the query. the method returns the number of lines inserted.
-                        if (reader > 0)
+                if (!IsAlreadyExistsUser())
+                {
+                    /*loading all the validators from the "signUp" validation group
+                     * and checking if they are all valid.*/
+                    Validate("signUp");
+                    if (IsValid)
+                        //The database connection in the using block will be automatically closed in any event.      
+                        using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
                         {
-                            Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
-                            Response.Redirect("~/Login.aspx"); //switching to the login page.
+                            string query = "INSERT INTO Users VALUES(@user, @password, @email, @birthdate, @name, @lastName)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+                            OleDbCommand command = new OleDbCommand(query, conn);
+                            //defining the query's parameters.
+                            command.Parameters.AddWithValue("@user", userTextBox.Text);
+                            command.Parameters.AddWithValue("@password", passwordTextBox.Text);
+                            command.Parameters.AddWithValue("@email", emailTextBox.Text);
+                            command.Parameters.AddWithValue("@birthdate", birthDate.Text);
+                            command.Parameters.AddWithValue("@name", nameTextBox.Text);
+                            command.Parameters.AddWithValue("@lastName", lastNameTextBox.Text);
+                            conn.Open();
+                            int reader = command.ExecuteNonQuery();//executing the query. the method returns the number of lines inserted.
+                            if (reader > 0)
+                            {
+                                Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
+                                Response.Redirect("~/Login.aspx"); //switching to the login page.
+                            }
                         }
-                    }
+                }
+                else
+                    Response.Write("<script> alert('User already taken');</script>");
             }
-            else
-                Response.Write("<script> alert('User already taken');</script>");
+            catch (OleDbException ex)
+            {
+                Debug.WriteLine("Error occured: " + ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error occured: " + ex.Message + ": " + ex.GetType());
+                Debug.WriteLine(ex.StackTrace);
+            }
         }
         /// <summary>
         /// This method checked if the username that was entered is already exists
@@ -85,15 +98,30 @@ namespace FinalWebProject
         /// </returns>
         public bool IsAlreadyExistsUser()
         {
-            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            try
             {
-                string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
-                OleDbCommand command = new OleDbCommand(query, conn);
-                command.Parameters.AddWithValue("@user", userTextBox.Text);
-                command.Parameters.AddWithValue("@email", emailTextBox.Text);
-                conn.Open();
-                OleDbDataReader reader = command.ExecuteReader();
-                return reader.Read();
+                using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+                {
+                    string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
+                    OleDbCommand command = new OleDbCommand(query, conn);
+                    command.Parameters.AddWithValue("@user", userTextBox.Text);
+                    command.Parameters.AddWithValue("@email", emailTextBox.Text);
+                    conn.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
+                    return reader.Read();
+                }
+            }
+            catch (OleDbException ex)
+            {
+                Debug.WriteLine("Error occured: " + ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error occured: " + ex.Message + ": " + ex.GetType());
+                Debug.WriteLine(ex.StackTrace);
+                throw;
             }
         }
 
