@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClosedConnectionSample.aspx" />
     <Content Include="LoginStyle.css" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -83,6 +84,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClosedConnectionSample.aspx.cs">
+      <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClosedConnectionSample.aspx.designer.cs">
+      <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

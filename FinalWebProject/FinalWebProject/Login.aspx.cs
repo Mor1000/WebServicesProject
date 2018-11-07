@@ -30,7 +30,7 @@ namespace FinalWebProject
         {
             /*loading all the validators from the "loginValidation" validation group
                 * and checking if they are all valid.*/
-            Validate("loginValidation");
+           
             if (IsValid)
                 try
                 {
