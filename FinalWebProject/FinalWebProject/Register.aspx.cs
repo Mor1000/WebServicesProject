@@ -31,8 +31,8 @@ namespace FinalWebProject
             confirmPasswordTextBox.Text = "";
             emailTextBox.Text = "";
             birthDate.Text = "";
-            nameTextBox.Text = "";
-            lastNameTextBox.Text = "";
+            countryTextBox.Text = "";
+            cityTextBox.Text = "";
 
         }
 
@@ -56,15 +56,15 @@ namespace FinalWebProject
                         //The database connection in the using block will be automatically closed in any event.      
                         using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
                         {
-                            string query = "INSERT INTO Users VALUES(@user, @password, @email, @birthdate, @name, @lastName)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+                            string query = "INSERT INTO Users VALUES(@user, @password, @email, @birthdate, @country, @city)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
                             OleDbCommand command = new OleDbCommand(query, conn);
                             //defining the query's parameters.
                             command.Parameters.AddWithValue("@user", userTextBox.Text);
                             command.Parameters.AddWithValue("@password", passwordTextBox.Text);
                             command.Parameters.AddWithValue("@email", emailTextBox.Text);
                             command.Parameters.AddWithValue("@birthdate", birthDate.Text);
-                            command.Parameters.AddWithValue("@name", nameTextBox.Text);
-                            command.Parameters.AddWithValue("@lastName", lastNameTextBox.Text);
+                            command.Parameters.AddWithValue("@country", countryTextBox.Text);
+                            command.Parameters.AddWithValue("@city", cityTextBox.Text);
                             conn.Open();
                             int reader = command.ExecuteNonQuery();//executing the query. the method returns the number of lines inserted.
                             if (reader > 0)

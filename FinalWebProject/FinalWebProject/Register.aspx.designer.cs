@@ -112,40 +112,40 @@ namespace FinalWebProject {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator birthdateRequiredFieldValidator;
         
         /// <summary>
-        /// nameTextBox control.
+        /// countryTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox countryTextBox;
         
         /// <summary>
-        /// nameRequiredFieldValidator control.
+        /// countryRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator nameRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator countryRequiredFieldValidator;
         
         /// <summary>
-        /// lastNameTextBox control.
+        /// cityTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lastNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox cityTextBox;
         
         /// <summary>
-        /// lastNameRequiredFieldValidator control.
+        /// cityNameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator lastNameRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cityNameRequiredFieldValidator;
         
         /// <summary>
         /// rangeValidator control.

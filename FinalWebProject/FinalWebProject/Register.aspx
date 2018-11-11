@@ -30,12 +30,12 @@
             <asp:RequiredFieldValidator ID="birthdateRequiredFieldValidator" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ValidationGroup="signUp" CssClass="requirements">*birthdate required</asp:RequiredFieldValidator>
             <br />
 
-            <asp:TextBox ID="nameTextBox" placeHolder="first name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="nameRequiredFieldValidator" runat="server" ControlToValidate="nameTextBox" EnableClientScript="False" CssClass="requirements">*Name Required</asp:RequiredFieldValidator>
+            <asp:TextBox ID="countryTextBox" placeHolder="country" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="countryRequiredFieldValidator" runat="server" ControlToValidate="countryTextBox" EnableClientScript="False" CssClass="requirements">*Country Required</asp:RequiredFieldValidator>
             <br />
 
-            <asp:TextBox ID="lastNameTextBox" placeHolder="last name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="lastNameRequiredFieldValidator" runat="server" ControlToValidate="lastNameTextBox" EnableClientScript="False" CssClass="requirements">*Last name required</asp:RequiredFieldValidator>
+            <asp:TextBox ID="cityTextBox" placeHolder="city" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="cityNameRequiredFieldValidator" runat="server" ControlToValidate="cityTextBox" EnableClientScript="False" CssClass="requirements">*City required</asp:RequiredFieldValidator>
             <br />
             <asp:RangeValidator ID="rangeValidator" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ErrorMessage="date is out of range" Type="Date" MinimumValue="02/10/1999" MaximumValue="24/10/2007" ValidationGroup="signUp" CssClass="validations"></asp:RangeValidator>
             <br />
