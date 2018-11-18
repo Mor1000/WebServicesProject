@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClosedConnectionSample.aspx" />
-    <Content Include="LoginStyle.css" />
+    <Content Include="CSS\LoginStyle.css" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -77,10 +77,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Login.aspx" />
+    <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Data\projectDatabase1.accdb" />
-    <Content Include="Register.aspx" />
-    <Content Include="RegisterStyle.css" />
+    <Content Include="App_Aspx\Register.aspx" />
+    <Content Include="CSS\RegisterStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,23 +91,26 @@
     <Compile Include="ClosedConnectionSample.aspx.designer.cs">
       <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Connection.cs" />
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="App_Data\Connection.cs" />
+    <Compile Include="App_Aspx\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="App_Aspx\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.aspx.cs">
+    <Compile Include="App_Aspx\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register.aspx.designer.cs">
+    <Compile Include="App_Aspx\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\RegisterService.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

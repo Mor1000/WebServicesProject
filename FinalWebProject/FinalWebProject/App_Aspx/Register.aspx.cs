@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Diagnostics;
@@ -47,27 +48,22 @@ namespace FinalWebProject
         {
             try
             {
-                if (!IsAlreadyExistsUser())
+                if (!RegisterService.IsAlreadyExistsUser(userTextBox.Text, emailTextBox.Text))
                 {
                     /*loading all the validators from the "signUp" validation group
                      * and checking if they are all valid.*/
                     Validate("signUp");
                     if (IsValid)
-                        //The database connection in the using block will be automatically closed in any event.      
-                        using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-                        {
-                            string query = "INSERT INTO Users VALUES(@user, @password, @email, @birthdate, @country, @city)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
-                            OleDbCommand command = new OleDbCommand(query, conn);
-                            //defining the query's parameters.
-                            command.Parameters.AddWithValue("@user", userTextBox.Text);
-                            command.Parameters.AddWithValue("@password", passwordTextBox.Text);
-                            command.Parameters.AddWithValue("@email", emailTextBox.Text);
-                            command.Parameters.AddWithValue("@birthdate", birthDate.Text);
-                            command.Parameters.AddWithValue("@country", countryTextBox.Text);
-                            command.Parameters.AddWithValue("@city", cityTextBox.Text);
-                            conn.Open();
-                            int reader = command.ExecuteNonQuery();//executing the query. the method returns the number of lines inserted.
-                            if (reader > 0)
+                    {
+                        ArrayList details = new ArrayList();
+                        details.Add(userTextBox.Text);
+                        details.Add(passwordTextBox.Text);
+                        details.Add(emailTextBox.Text);
+                        details.Add(birthDate.Text);
+                        details.Add(countryTextBox.Text);
+                        details.Add(cityTextBox.Text);
+                  
+                            if (RegisterService.SignUp(details) > 0)
                             {
                                 Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
                                 Response.Redirect("~/Login.aspx"); //switching to the login page.
@@ -96,18 +92,7 @@ namespace FinalWebProject
         /// If the username exists this methot returns true,
         /// otherwise it returns false.
         /// </returns>
-        public bool IsAlreadyExistsUser()
-        {
-            OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString());
-
-            string query = "SELECT username, userEmail FROM Users WHERE username=@user OR userEmail=@email";
-            OleDbCommand command = new OleDbCommand(query, conn);
-            command.Parameters.AddWithValue("@user", userTextBox.Text);
-            command.Parameters.AddWithValue("@email", emailTextBox.Text);
-            conn.Open();
-            OleDbDataReader reader = command.ExecuteReader();
-            return reader.Read();
-        }
+      
 
         /// <summary>
         /// This method checks whether the username and the password are valid or not.
