@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalWebProject {
+namespace FinalWebProject.App_Aspx {
     
     
     public partial class Login {

@@ -1,31 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalWebProject
+namespace FinalWebProject.App_Aspx
 {
-    /// <summary>
-    /// This is the code behind of the users login page.
-    /// </summary>
     public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-        /// <summary>
-        /// A method called when the user clicked the login button. If the username and password
-        /// are valid and exists in the users table in the databese the user 
-        /// should be successfully signed in. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        }   /// <summary>
+            /// A method called when the user clicked the login button. If the username and password
+            /// are valid and exists in the users table in the databese the user 
+            /// should be successfully signed in. 
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
         protected void LoginClick(object sender, EventArgs e)
         {
             /*loading all the validators from the "loginValidation" validation group
@@ -59,7 +54,7 @@ namespace FinalWebProject
         /// <param name="e"></param>
         protected void SignUpClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Register.aspx");
+            Response.Redirect("~/App_Aspx/Register.aspx");
         }
     }
 }

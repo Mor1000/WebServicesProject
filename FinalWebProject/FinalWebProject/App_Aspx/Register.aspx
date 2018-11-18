@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="FinalWebProject.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="FinalWebProject.App_Aspx.Register" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <link rel="stylesheet" href="../CSS/RegisterStyle.css" />
+      <title></title>
+ <link rel="stylesheet" href="../CSS/RegisterStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,8 +34,7 @@
             <asp:RequiredFieldValidator ID="countryRequiredFieldValidator" runat="server" ControlToValidate="countryTextBox" EnableClientScript="False" CssClass="requirements">*Country Required</asp:RequiredFieldValidator>
             <br />
 
-            <asp:TextBox ID="cityTextBox" placeHolder="city" runat="server" CssClass="accountTextboxes"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="cityNameRequiredFieldValidator" runat="server" ControlToValidate="cityTextBox" EnableClientScript="False" CssClass="requirements">*City required</asp:RequiredFieldValidator>
+            <asp:TextBox ID="arenaNameTextBox" placeHolder="MTG arena name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
             <br />
             <asp:RangeValidator ID="rangeValidator" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ErrorMessage="date is out of range" Type="Date" MinimumValue="02/10/1999" MaximumValue="24/10/2007" ValidationGroup="signUp" CssClass="validations"></asp:RangeValidator>
             <br />

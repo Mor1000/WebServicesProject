@@ -8,16 +8,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalWebProject
+namespace FinalWebProject.App_Aspx
 {
-    /// <summary>
-    /// This is the code behind of the users registration page.
-    /// </summary>
     public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+    
         }
 
         /// <summary>
@@ -33,7 +30,7 @@ namespace FinalWebProject
             emailTextBox.Text = "";
             birthDate.Text = "";
             countryTextBox.Text = "";
-            cityTextBox.Text = "";
+            arenaNameTextBox.Text = "";
 
         }
 
@@ -61,14 +58,14 @@ namespace FinalWebProject
                         details.Add(emailTextBox.Text);
                         details.Add(birthDate.Text);
                         details.Add(countryTextBox.Text);
-                        details.Add(cityTextBox.Text);
-                  
-                            if (RegisterService.SignUp(details) > 0)
-                            {
-                                Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
-                                Response.Redirect("~/Login.aspx"); //switching to the login page.
-                            }
+                        details.Add(arenaNameTextBox.Text);
+
+                        if (RegisterService.SignUp(details) > 0)
+                        {
+                            Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
+                            Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
                         }
+                    }
                 }
                 else
                     Response.Write("<script> alert('User already taken');</script>");
@@ -92,7 +89,7 @@ namespace FinalWebProject
         /// If the username exists this methot returns true,
         /// otherwise it returns false.
         /// </returns>
-      
+
 
         /// <summary>
         /// This method checks whether the username and the password are valid or not.
