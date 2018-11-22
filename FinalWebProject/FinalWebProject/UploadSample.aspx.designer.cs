@@ -10,7 +10,7 @@
 namespace FinalWebProject {
     
     
-    public partial class ClosedConnectionSample {
+    public partial class UploadSample {
         
         /// <summary>
         /// form1 control.
@@ -22,21 +22,12 @@ namespace FinalWebProject {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// arenaDropDownList control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList arenaDropDownList;
-        
-        /// <summary>
-        /// showArenaButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button showArenaButton;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
     }
 }

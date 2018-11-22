@@ -11,6 +11,7 @@ namespace FinalWebProject.App_Aspx
 {
     public partial class Login : System.Web.UI.Page
     {
+        UserService us = new UserService();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,7 +32,7 @@ namespace FinalWebProject.App_Aspx
                 {
                     //The database connection in the using block will be automatically closed in any event.      
 
-                    if (!LoginService.UserLogin(userTextBox.Text, passwordTextBox.Text))//check if the data was found in the database. 
+                    if (!us.UserLogin(userTextBox.Text, passwordTextBox.Text))//check if the data was found in the database. 
                         Response.Write("<script>alert('Login failed');</script>");
                 }
 

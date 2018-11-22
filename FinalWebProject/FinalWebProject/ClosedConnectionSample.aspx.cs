@@ -25,14 +25,14 @@ namespace FinalWebProject
                 using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
                 {
 
-                    string query = "SELECT lastName, UserPassword FROM Users" ;//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+                    string query = "SELECT mtgArenaName FROM Users";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
                     OleDbCommand command = new OleDbCommand(query, conn);
-                    //defining the query's parameters.
+                   // defining the query's parameters.
                     conn.Open();
-                    DataSet usersDataSet = GetAllSurnames(command);
+                    DataSet usersDataSet = GetAllArenanames(command);
                     foreach (DataRow rows in usersDataSet.Tables["Users"].Rows)
                     {
-                        surnamesDropDownList.Items.Add(new ListItem(rows["lastName"].ToString()));
+                        arenaDropDownList.Items.Add(new ListItem(rows["mtgArenaName"].ToString()));
                     }
                 }
             }
@@ -47,7 +47,7 @@ namespace FinalWebProject
                 Debug.WriteLine(ex.StackTrace);
             }
         }
-        public DataSet GetAllSurnames(OleDbCommand command)
+        public DataSet GetAllArenanames(OleDbCommand command)
         {
             DataSet ds = new DataSet();
             OleDbDataAdapter dataAdapter=new OleDbDataAdapter(command);

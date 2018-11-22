@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FinalWebProject.ClassTypes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Diagnostics;
 using System.Linq;
@@ -12,9 +14,11 @@ namespace FinalWebProject.App_Aspx
 {
     public partial class Register : System.Web.UI.Page
     {
+        UserService us = new UserService();
         protected void Page_Load(object sender, EventArgs e)
         {
-    
+            if (!IsPostBack)
+                AddCountries();
         }
 
         /// <summary>
@@ -28,8 +32,7 @@ namespace FinalWebProject.App_Aspx
             passwordTextBox.Text = "";
             confirmPasswordTextBox.Text = "";
             emailTextBox.Text = "";
-            birthDate.Text = "";
-            countryTextBox.Text = "";
+            birthDateTextBox.Text = "";
             arenaNameTextBox.Text = "";
 
         }
@@ -45,31 +48,25 @@ namespace FinalWebProject.App_Aspx
         {
             try
             {
-                if (!RegisterService.IsAlreadyExistsUser(userTextBox.Text, emailTextBox.Text))
+                if (!us.IsAlreadyExistsUser(userTextBox.Text,emailTextBox.Text))
                 {
+                    UserType user;
                     /*loading all the validators from the "signUp" validation group
                      * and checking if they are all valid.*/
-                    Validate("signUp");
-                    if (IsValid)
-                    {
-                        ArrayList details = new ArrayList();
-                        details.Add(userTextBox.Text);
-                        details.Add(passwordTextBox.Text);
-                        details.Add(emailTextBox.Text);
-                        details.Add(birthDate.Text);
-                        details.Add(countryTextBox.Text);
-                        details.Add(arenaNameTextBox.Text);
+                    if (IsValid) { 
+                        //The database connection in the using block will be automatically closed in any event.      
+                        user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, countriesDropDownList.SelectedValue, false, arenaNameTextBox.Text);
 
-                        if (RegisterService.SignUp(details) > 0)
-                        {
-                            Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
-                            Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
+                    if (us.SignUp(user) > 0)
+                            {
+                                Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
+                                Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
+                            }
                         }
-                    }
                 }
                 else
                     Response.Write("<script> alert('User already taken');</script>");
-            }
+        }
             catch (OleDbException ex)
             {
                 Debug.WriteLine("Error occured: " + ex.Message);
@@ -81,15 +78,6 @@ namespace FinalWebProject.App_Aspx
                 Debug.WriteLine(ex.StackTrace);
             }
         }
-        /// <summary>
-        /// This method checked if the username that was entered is already exists
-        /// in the users table in the database.
-        /// </summary>
-        /// <returns>
-        /// If the username exists this methot returns true,
-        /// otherwise it returns false.
-        /// </returns>
-
 
         /// <summary>
         /// This method checks whether the username and the password are valid or not.
@@ -101,5 +89,31 @@ namespace FinalWebProject.App_Aspx
             args.IsValid = args.Value.Length >= 5;
 
         }
+        private DataSet GetAllCountries(OleDbCommand command)
+        {
+            DataSet ds = new DataSet();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
+            DataTable usersTable = new DataTable("CountriesList");
+            dataAdapter.Fill(usersTable);
+            ds.Tables.Add(usersTable);
+            return ds;
+        }
+        private void AddCountries()
+        {
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
+
+                string query = "SELECT countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+                OleDbCommand command = new OleDbCommand(query, conn);
+                //defining the query's parameters.
+                conn.Open();
+                DataSet usersDataSet = GetAllCountries(command);
+                foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
+                {
+                    countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
+                }
+            }
+        }
+
     }
 }

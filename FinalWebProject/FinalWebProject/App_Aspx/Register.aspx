@@ -26,17 +26,16 @@
             <asp:RequiredFieldValidator ID="emailRequiredFieldValidator" EnableClientScript="false" ControlToValidate="emailTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*email required</asp:RequiredFieldValidator>
             <br />
 
-            <asp:TextBox ID="birthDate" placeHolder="birthdate" TextMode="Date" runat="server" CssClass="accountTextboxes"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="birthdateRequiredFieldValidator" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ValidationGroup="signUp" CssClass="requirements">*birthdate required</asp:RequiredFieldValidator>
+            <asp:TextBox ID="birthDateTextBox" placeHolder="birthdate" TextMode="Date" runat="server" CssClass="accountTextboxes"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="birthdateRequiredFieldValidator" EnableClientScript="false" ControlToValidate="birthDateTextBox" runat="server" ValidationGroup="signUp" CssClass="requirements">*birthdate required</asp:RequiredFieldValidator>
             <br />
-
-            <asp:TextBox ID="countryTextBox" placeHolder="country" runat="server" CssClass="accountTextboxes"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="countryRequiredFieldValidator" runat="server" ControlToValidate="countryTextBox" EnableClientScript="False" CssClass="requirements">*Country Required</asp:RequiredFieldValidator>
+            <asp:DropDownList ID="countriesDropDownList" runat="server" CssClass="accountTextboxes"></asp:DropDownList>
+            <asp:RequiredFieldValidator ID="countryRequiredFieldValidator" runat="server" ControlToValidate="countriesDropDownList" EnableClientScript="False" CssClass="requirements">*Country Required</asp:RequiredFieldValidator>
             <br />
 
             <asp:TextBox ID="arenaNameTextBox" placeHolder="MTG arena name" runat="server" CssClass="accountTextboxes"></asp:TextBox>
             <br />
-            <asp:RangeValidator ID="rangeValidator" EnableClientScript="false" ControlToValidate="birthDate" runat="server" ErrorMessage="date is out of range" Type="Date" MinimumValue="02/10/1999" MaximumValue="24/10/2007" ValidationGroup="signUp" CssClass="validations"></asp:RangeValidator>
+            <asp:RangeValidator ID="rangeValidator" EnableClientScript="false" ControlToValidate="birthDateTextBox" runat="server" ErrorMessage="date is out of range" Type="Date" MinimumValue="02/10/1999" MaximumValue="24/10/2007" ValidationGroup="signUp" CssClass="validations"></asp:RangeValidator>
             <br />
             <asp:CustomValidator ID="customValidatorPassword" ControlToValidate="passwordTextBox" EnableClientScript="false" OnServerValidate="CheckChars" runat="server" ErrorMessage="password should have more than 4 chars" ControlToCompare="passwordTextBox" ValidationGroup="signUp" CssClass="validations"></asp:CustomValidator>
             <br />

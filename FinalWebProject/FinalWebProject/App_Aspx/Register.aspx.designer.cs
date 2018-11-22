@@ -94,13 +94,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator emailRequiredFieldValidator;
         
         /// <summary>
-        /// birthDate control.
+        /// birthDateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox birthDate;
+        protected global::System.Web.UI.WebControls.TextBox birthDateTextBox;
         
         /// <summary>
         /// birthdateRequiredFieldValidator control.
@@ -112,13 +112,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator birthdateRequiredFieldValidator;
         
         /// <summary>
-        /// countryTextBox control.
+        /// countriesDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox countryTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList countriesDropDownList;
         
         /// <summary>
         /// countryRequiredFieldValidator control.

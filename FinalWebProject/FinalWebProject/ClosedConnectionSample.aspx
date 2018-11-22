@@ -9,8 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:DropDownList ID="surnamesDropDownList" runat="server"></asp:DropDownList>
-        <asp:Button ID="showSurnamesButton" runat="server" Text="Show" OnClick="onShowButton" />
+        <asp:DropDownList ID="arenaDropDownList" runat="server"></asp:DropDownList>
+        <asp:Button ID="showArenaButton" runat="server" Text="Show" OnClick="onShowButton" />
     </div>
     </form>
 </body>
