@@ -11,18 +11,23 @@ namespace FinalWebProject.ClassTypes
         public string password { get; set; }
         public string email { get; set; }
         public string birthdate { get; set; }
-        public string country { get; set; }
-        public bool blocked { get; set; }
+        public int country { get; set; }
+        public bool isValid { get; set; }
         public string arenaName { get; set; }
 
-        public UserType(string username,string password,string email,string birthdate,string country, bool blocked, string arenaName)
+        public UserType(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
+        public UserType(string username,string password,string email,string birthdate,int country, bool isValid, string arenaName)
         {
             this.username = username;
             this.password = password;
             this.email = email;
             this.birthdate = birthdate;
             this.country = country;
-            this.blocked = blocked;
+            this.isValid = isValid;
             this.arenaName = arenaName;  
         }
     }

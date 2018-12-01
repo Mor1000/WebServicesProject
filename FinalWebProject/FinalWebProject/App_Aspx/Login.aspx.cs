@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FinalWebProject.ClassTypes;
+using FinalWebProject_App_Services;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Diagnostics;
@@ -11,7 +13,7 @@ namespace FinalWebProject.App_Aspx
 {
     public partial class Login : System.Web.UI.Page
     {
-        UserService us = new UserService();
+        UserService us;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,10 +32,13 @@ namespace FinalWebProject.App_Aspx
             if (IsValid)
                 try
                 {
+                    us = new UserService(new UserType(userTextBox.Text, passwordTextBox.Text));
                     //The database connection in the using block will be automatically closed in any event.      
-
-                    if (!us.UserLogin(userTextBox.Text, passwordTextBox.Text))//check if the data was found in the database. 
+                    
+                    if (!us.UserLogin())//check if the data was found in the database. 
                         Response.Write("<script>alert('Login failed');</script>");
+                    else
+                        Response.Write("<script>alert('Login succeeded');</script>");
                 }
 
                 catch (OleDbException ex)

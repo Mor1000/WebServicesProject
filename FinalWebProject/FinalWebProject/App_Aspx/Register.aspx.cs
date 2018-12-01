@@ -1,4 +1,5 @@
 ﻿using FinalWebProject.ClassTypes;
+using FinalWebProject_App_Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace FinalWebProject.App_Aspx
 {
     public partial class Register : System.Web.UI.Page
     {
-        UserService us = new UserService();
+        UserService us;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -48,25 +49,27 @@ namespace FinalWebProject.App_Aspx
         {
             try
             {
-                if (!us.IsAlreadyExistsUser(userTextBox.Text,emailTextBox.Text))
+                UserType user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, countriesDropDownList.SelectedIndex + 1, false, arenaNameTextBox.Text);
+                us = new UserService(user);
+                if (!us.IsAlreadyExistsUser())
                 {
-                    UserType user;
+
                     /*loading all the validators from the "signUp" validation group
                      * and checking if they are all valid.*/
-                    if (IsValid) { 
+                    if (IsValid)
+                    {
                         //The database connection in the using block will be automatically closed in any event.      
-                        user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, countriesDropDownList.SelectedValue, false, arenaNameTextBox.Text);
 
-                    if (us.SignUp(user) > 0)
-                            {
-                                Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
-                                Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
-                            }
+                        if (us.SignUp() > 0)
+                        {
+                            Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
+                            Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
                         }
+                    }
                 }
                 else
                     Response.Write("<script> alert('User already taken');</script>");
-        }
+            }
             catch (OleDbException ex)
             {
                 Debug.WriteLine("Error occured: " + ex.Message);
@@ -89,29 +92,14 @@ namespace FinalWebProject.App_Aspx
             args.IsValid = args.Value.Length >= 5;
 
         }
-        private DataSet GetAllCountries(OleDbCommand command)
-        {
-            DataSet ds = new DataSet();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
-            DataTable usersTable = new DataTable("CountriesList");
-            dataAdapter.Fill(usersTable);
-            ds.Tables.Add(usersTable);
-            return ds;
-        }
+    
         private void AddCountries()
         {
-            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            UserService userServices = new UserService();
+            DataSet usersDataSet = userServices.GetAllCountries();
+            foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
             {
-
-                string query = "SELECT countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
-                OleDbCommand command = new OleDbCommand(query, conn);
-                //defining the query's parameters.
-                conn.Open();
-                DataSet usersDataSet = GetAllCountries(command);
-                foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
-                {
-                    countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
-                }
+                countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
             }
         }
 
