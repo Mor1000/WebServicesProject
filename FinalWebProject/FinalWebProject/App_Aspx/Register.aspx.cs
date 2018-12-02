@@ -95,11 +95,18 @@ namespace FinalWebProject.App_Aspx
     
         private void AddCountries()
         {
-            UserService userServices = new UserService();
-            DataSet usersDataSet = userServices.GetAllCountries();
-            foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
+            try
             {
-                countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
+                UserService userServices = new UserService();
+                DataSet usersDataSet = userServices.GetAllCountries();
+                foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
+                {
+                    countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.StackTrace);
             }
         }
 

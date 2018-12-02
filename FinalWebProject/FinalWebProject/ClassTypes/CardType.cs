@@ -10,10 +10,10 @@ namespace FinalWebProject.ClassTypes
         public string cardName { get; set; }
         public string cardAbility { get; set; }
         public int cardManaCost { get; set; }
-        public string cardRarity { get; set; }
+        public int cardRarity { get; set; }
         public string cardImage { get; set; }
 
-        public CardType(string name, string ability, int manaCost, string rarity, string image)
+        public CardType(string name, string ability, int manaCost, int rarity, string image)
         {
             cardName = name;
             cardAbility = ability;

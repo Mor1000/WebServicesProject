@@ -67,13 +67,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.TextBox abilityTextBox;
         
         /// <summary>
-        /// abilityRequiredFieldValidator0 control.
+        /// abilityRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator0;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator;
         
         /// <summary>
         /// manaCostLabel control.
@@ -94,13 +94,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.TextBox manaCostTextBox;
         
         /// <summary>
-        /// abilityRequiredFieldValidator1 control.
+        /// manaCostRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator manaCostRequiredFieldValidator;
         
         /// <summary>
         /// rarityLabel control.
@@ -112,22 +112,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.Label rarityLabel;
         
         /// <summary>
-        /// rarityTextBox control.
+        /// raritiesDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rarityTextBox;
-        
-        /// <summary>
-        /// abilityRequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.DropDownList raritiesDropDownList;
         
         /// <summary>
         /// cardimageLabel control.
@@ -155,5 +146,14 @@ namespace FinalWebProject.App_Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button insertButton;
+        
+        /// <summary>
+        /// manaCostRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator manaCostRangeValidator;
     }
 }

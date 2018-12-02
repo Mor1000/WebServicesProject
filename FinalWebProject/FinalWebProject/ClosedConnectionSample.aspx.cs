@@ -12,7 +12,6 @@ namespace FinalWebProject
 {
     public partial class ClosedConnectionSample : System.Web.UI.Page
     {
-        string CS = (new Connection()).GetConnectionString();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,7 +22,7 @@ namespace FinalWebProject
             try
             {
                 //The database connection in the using block will be automatically closed in any event.      
-                using (OleDbConnection conn = new OleDbConnection(CS))
+                using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
                 {
 
                     string query = "SELECT mtgArenaName FROM Users";//This query is parameterized so that the user input will be checked only as one of the fields in the table.

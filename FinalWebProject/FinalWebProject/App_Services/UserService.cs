@@ -13,13 +13,12 @@ namespace FinalWebProject_App_Services
 {
     public class UserService
     {
-        string CS = (new Connection()).GetConnectionString();
 
         public UserType userDetails { get; set; }
-        
+
         public UserService()
         {
-                
+
         }
         public UserService(UserType user)
         {
@@ -27,19 +26,21 @@ namespace FinalWebProject_App_Services
         }
         public bool IsAlreadyExistsUser()
         {
-            OleDbConnection conn = new OleDbConnection(CS);
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
 
-            string query = "SELECT username, userEmail FROM Users WHERE username=@user_name OR userEmail=@email";
-            OleDbCommand command = new OleDbCommand(query, conn);
-            command.Parameters.AddWithValue("@user_name", userDetails.username);
-            command.Parameters.AddWithValue("@user_email", userDetails.email);
-            conn.Open();
-            OleDbDataReader reader = command.ExecuteReader();
-            return reader.Read();
+                string query = "SELECT username, userEmail FROM Users WHERE username=@user_name OR userEmail=@email";
+                OleDbCommand command = new OleDbCommand(query, conn);
+                command.Parameters.AddWithValue("@user_name", userDetails.username);
+                command.Parameters.AddWithValue("@user_email", userDetails.email);
+                conn.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                return reader.Read();
+            }
         }
         public int SignUp()
         {
-            using (OleDbConnection conn = new OleDbConnection(CS))
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
             {
                 string query = "INSERT INTO Users (userName, userPassword ,userEmail, userBirthdate, userCountry, userMtgArenaName) VALUES(@user_name, @user_password, @user_email, @user_birthdate, @user_country, @user_arena)";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
                 OleDbCommand command = new OleDbCommand(query, conn);
@@ -56,7 +57,7 @@ namespace FinalWebProject_App_Services
         }
         public bool UserLogin()
         {
-            using (OleDbConnection conn = new OleDbConnection(CS))
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
             {
 
                 string query = "SELECT userName, userPassword FROM Users WHERE userName = @user_name and userPassword = @user_password"; ;//This query is parameterized so that the user input will be checked only as one of the fields in the table.
@@ -70,7 +71,7 @@ namespace FinalWebProject_App_Services
         }
         public DataSet GetAllCountries()
         {
-            using (OleDbConnection conn = new OleDbConnection(CS))
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
             {
 
                 string query = "SELECT countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.

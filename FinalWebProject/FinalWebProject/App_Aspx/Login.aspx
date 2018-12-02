@@ -20,7 +20,7 @@
             <asp:RequiredFieldValidator ID="passwordRequired" ControlToValidate="passwordTextBox" EnableClientScript="false" runat="server" ErrorMessage="please enter password" ValidationGroup="loginValidation"></asp:RequiredFieldValidator>
             <br />
             <asp:Button ID="loginButton" runat="server" OnClick="LoginClick" Text="Login" ValidationGroup="loginValidation" CssClass="buttons" />
-            <asp:Button ID="signUpButton" runat="server" OnClick="SignUpClick" Text="Sign Up" CssClass="buttons" Height="42px" Width="86px" />
+            <asp:Button ID="signUpButton" runat="server" OnClick="SignUpClick" Text="Sign Up" CssClass="buttons" />
 
         </div>
     </form>

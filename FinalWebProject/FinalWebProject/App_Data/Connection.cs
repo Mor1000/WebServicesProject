@@ -15,7 +15,7 @@ namespace FinalWebProject
         /// Connecting to the local database.
         /// </summary>
         /// <returns>A string with the database connection content.</returns>
-        public string GetConnectionString()
+        public static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["DBconnection"].ToString();
             

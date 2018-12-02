@@ -2,6 +2,8 @@
 using FinalWebProject_App_Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,7 +16,8 @@ namespace FinalWebProject.App_Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+                AddRarities();
         }
         protected void insertClick(object sender, EventArgs e)
         {
@@ -26,7 +29,7 @@ namespace FinalWebProject.App_Aspx
                 {
                     string filename = Path.GetFileName(cardImage.FileName);
                     cardImage.PostedFile.SaveAs(Server.MapPath(filename));
-                    CardType card = new CardType(cardNameTextBox.Text, abilityTextBox.Text, int.Parse(manaCostTextBox.Text), rarityTextBox.Text, filename);
+                    CardType card = new CardType(cardNameTextBox.Text, abilityTextBox.Text, int.Parse(manaCostTextBox.Text), raritiesDropDownList.SelectedIndex+1, filename);
                     CardsService insertService = new CardsService(card);
                     if (insertService.InsertCard() > 0)
                     {
@@ -37,6 +40,22 @@ namespace FinalWebProject.App_Aspx
                         Response.Write("<script>alert('Insertion failed');</script>");
                     }
                 }
+            }
+        }
+        private void AddRarities()
+        {
+            try
+            {
+                CardsService cardsServices = new CardsService();
+                DataSet cardsDataSet = cardsServices.GetAllRarities();
+                foreach (DataRow rows in cardsDataSet.Tables["Rarities"].Rows)
+                {
+                    raritiesDropDownList.Items.Add(new ListItem(rows["rarityName"].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.StackTrace);
             }
         }
     }

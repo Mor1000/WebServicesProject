@@ -67,10 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Aspx\CardsInsert.aspx" />
+    <Content Include="App_Aspx\DecksInsert.aspx" />
     <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Aspx\Register.aspx" />
     <Content Include="ClosedConnectionSample.aspx" />
     <Content Include="CSS\LoginStyle.css" />
+    <Content Include="GridView sample.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -92,6 +94,13 @@
     <Compile Include="App_Aspx\CardsInsert.aspx.designer.cs">
       <DependentUpon>CardsInsert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Aspx\DecksInsert.aspx.cs">
+      <DependentUpon>DecksInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\DecksInsert.aspx.designer.cs">
+      <DependentUpon>DecksInsert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Aspx\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,7 +116,9 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Services\CardsService.cs" />
+    <Compile Include="App_Services\DecksService.cs" />
     <Compile Include="ClassTypes\CardType.cs" />
+    <Compile Include="ClassTypes\DeckType.cs" />
     <Compile Include="ClassTypes\UserType.cs" />
     <Compile Include="ClosedConnectionSample.aspx.cs">
       <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
@@ -117,6 +128,13 @@
       <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Data\Connection.cs" />
+    <Compile Include="GridView sample.aspx.cs">
+      <DependentUpon>GridView sample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GridView sample.aspx.designer.cs">
+      <DependentUpon>GridView sample.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Services\UserService.cs" />
   </ItemGroup>

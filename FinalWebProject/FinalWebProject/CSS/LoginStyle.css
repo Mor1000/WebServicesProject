@@ -19,10 +19,12 @@
     left:110px;
 }
 .buttons{
-    background-color:coral;
+    width:150px;
+    height:130px;
+    background-color:chocolate;
     margin-top:120px;
     margin-left:40px;
-    padding:8px;
+    padding:10px;
 }
 #userRequired{
     position:absolute;
