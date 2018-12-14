@@ -49,7 +49,7 @@ namespace FinalWebProject.App_Aspx
         {
             try
             {
-                UserType user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, countriesDropDownList.SelectedIndex + 1, false, arenaNameTextBox.Text);
+                UserType user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, int.Parse(countriesDropDownList.SelectedValue), false, arenaNameTextBox.Text);
                 us = new UserService(user);
                 if (!us.IsAlreadyExistsUser())
                 {
@@ -99,10 +99,7 @@ namespace FinalWebProject.App_Aspx
             {
                 UserService userServices = new UserService();
                 DataSet usersDataSet = userServices.GetAllCountries();
-                foreach (DataRow rows in usersDataSet.Tables["CountriesList"].Rows)
-                {
-                    countriesDropDownList.Items.Add(new ListItem(rows["countryName"].ToString()));
-                }
+                Utilities.AddToDropDownList(usersDataSet,countriesDropDownList,"CountriesList","countryName","countryId");
             }
             catch(Exception ex)
             {

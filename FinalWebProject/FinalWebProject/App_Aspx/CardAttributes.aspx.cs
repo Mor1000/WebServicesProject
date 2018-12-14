@@ -1,5 +1,6 @@
 ﻿using FinalWebProject.App_Services;
 using FinalWebProject.ClassTypes;
+using FinalWebProject_App_Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,12 +12,13 @@ using System.Web.UI.WebControls;
 
 namespace FinalWebProject.App_Aspx
 {
-    public partial class DecksInsert : System.Web.UI.Page
+    public partial class CardAttributes : System.Web.UI.Page
     {
+        CardsAttributesService cardAttService;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-                AddFormats();
+                AddCards();
         }
 
         protected void OnInsert(object sender, EventArgs e)
@@ -25,9 +27,9 @@ namespace FinalWebProject.App_Aspx
             {
                 if (IsValid)
                 {
-                    DeckType deck = new DeckType(nameTextBox.Text, int.Parse(formatsDropDownList.SelectedValue), DateTime.Now.ToShortDateString(), descriptionTextBox.Text);
-                    DecksService insertService = new DecksService(deck);
-                    if (insertService.InsertDeck() > 0)
+                    CardAttributeType attributeCard = new CardAttributeType(int.Parse(cardDropDownList.SelectedValue), int.Parse(powerTextBox.Text), int.Parse(toughnessTextBox.Text));
+                    cardAttService = new CardsAttributesService(attributeCard);
+                    if (cardAttService.InsertAttributeCard() > 0)
                     {
                         Response.Write("<script>alert('Successfully inserted');</script>");
                     }
@@ -39,19 +41,18 @@ namespace FinalWebProject.App_Aspx
                 }
             }
 
+
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.StackTrace);
             }
-
         }
-        private void AddFormats()
+        private void AddCards()
         {
             try
             {
-                DecksService cardsServices = new DecksService();
-                DataSet cardsDataSet = cardsServices.GetAllFormats();
-                Utilities.AddToDropDownList(cardsDataSet, formatsDropDownList, "Formats", "formatName", "formatId");
+                DataSet kindCardsDataSet = new CardsService().GetAllCards();
+                Utilities.AddToDropDownList(kindCardsDataSet,cardDropDownList, "AllMagicCards","cardName","cardId");
             }
             catch (Exception ex)
             {

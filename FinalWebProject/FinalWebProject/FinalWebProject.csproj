@@ -66,11 +66,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Aspx\CardAttributes.aspx" />
+    <Content Include="App_Aspx\CardsColorInsert.aspx" />
+    <Content Include="App_Aspx\CardsGridView.aspx" />
     <Content Include="App_Aspx\CardsInsert.aspx" />
+    <Content Include="App_Aspx\CardsKindsInsert.aspx" />
+    <Content Include="App_Aspx\DecksGridView.aspx" />
     <Content Include="App_Aspx\DecksInsert.aspx" />
+    <Content Include="App_Aspx\FormatsInsert.aspx" />
     <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Aspx\Register.aspx" />
+    <Content Include="App_Aspx\UserCardsInsert.aspx" />
     <Content Include="ClosedConnectionSample.aspx" />
+    <Content Include="CSS\CardsInsertStyle.css" />
     <Content Include="CSS\LoginStyle.css" />
     <Content Include="GridView sample.aspx" />
     <Content Include="packages.config" />
@@ -87,6 +95,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Aspx\CardAttributes.aspx.cs">
+      <DependentUpon>CardAttributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\CardAttributes.aspx.designer.cs">
+      <DependentUpon>CardAttributes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\CardsColorInsert.aspx.cs">
+      <DependentUpon>CardsColorInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\CardsColorInsert.aspx.designer.cs">
+      <DependentUpon>CardsColorInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\CardsGridView.aspx.cs">
+      <DependentUpon>CardsGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\CardsGridView.aspx.designer.cs">
+      <DependentUpon>CardsGridView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Aspx\CardsInsert.aspx.cs">
       <DependentUpon>CardsInsert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,12 +123,33 @@
     <Compile Include="App_Aspx\CardsInsert.aspx.designer.cs">
       <DependentUpon>CardsInsert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Aspx\CardsKindsInsert.aspx.cs">
+      <DependentUpon>CardsKindsInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\CardsKindsInsert.aspx.designer.cs">
+      <DependentUpon>CardsKindsInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\DecksGridView.aspx.cs">
+      <DependentUpon>DecksGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\DecksGridView.aspx.designer.cs">
+      <DependentUpon>DecksGridView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Aspx\DecksInsert.aspx.cs">
       <DependentUpon>DecksInsert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Aspx\DecksInsert.aspx.designer.cs">
       <DependentUpon>DecksInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\FormatsInsert.aspx.cs">
+      <DependentUpon>FormatsInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\FormatsInsert.aspx.designer.cs">
+      <DependentUpon>FormatsInsert.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -115,10 +165,28 @@
     <Compile Include="App_Aspx\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Aspx\UserCardsInsert.aspx.cs">
+      <DependentUpon>UserCardsInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\UserCardsInsert.aspx.designer.cs">
+      <DependentUpon>UserCardsInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Services\CardColorService.cs" />
+    <Compile Include="App_Services\CardKindService.cs" />
+    <Compile Include="App_Services\CardsAttributesService.cs" />
     <Compile Include="App_Services\CardsService.cs" />
     <Compile Include="App_Services\DecksService.cs" />
+    <Compile Include="App_Services\FormatsService.cs" />
+    <Compile Include="App_Services\GeneralService.cs" />
+    <Compile Include="App_Services\UserCardService.cs" />
+    <Compile Include="ClassTypes\CardAttributeType.cs" />
+    <Compile Include="ClassTypes\CardColorType.cs" />
+    <Compile Include="ClassTypes\CardKindType.cs" />
     <Compile Include="ClassTypes\CardType.cs" />
     <Compile Include="ClassTypes\DeckType.cs" />
+    <Compile Include="ClassTypes\FormatType.cs" />
+    <Compile Include="ClassTypes\UserCardType.cs" />
     <Compile Include="ClassTypes\UserType.cs" />
     <Compile Include="ClosedConnectionSample.aspx.cs">
       <DependentUpon>ClosedConnectionSample.aspx</DependentUpon>
@@ -137,6 +205,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Services\UserService.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

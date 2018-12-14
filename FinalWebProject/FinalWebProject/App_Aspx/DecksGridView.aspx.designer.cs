@@ -10,7 +10,7 @@
 namespace FinalWebProject.App_Aspx {
     
     
-    public partial class CardsInsert {
+    public partial class DecksGridView {
         
         /// <summary>
         /// form1 control.
@@ -31,120 +31,111 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.Label nameLabel;
         
         /// <summary>
-        /// cardNameTextBox control.
+        /// nameDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNameTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList nameDropDownList;
         
         /// <summary>
-        /// cardNameRequiredFieldValidator control.
+        /// formatLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator cardNameRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.Label formatLabel;
         
         /// <summary>
-        /// abilityLabel control.
+        /// formatDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label abilityLabel;
+        protected global::System.Web.UI.WebControls.DropDownList formatDropDownList;
         
         /// <summary>
-        /// abilityTextBox control.
+        /// minDateLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox abilityTextBox;
+        protected global::System.Web.UI.WebControls.Label minDateLabel;
         
         /// <summary>
-        /// abilityRequiredFieldValidator control.
+        /// minDateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.TextBox minDateTextBox;
         
         /// <summary>
-        /// manaCostLabel control.
+        /// maxDateLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label manaCostLabel;
+        protected global::System.Web.UI.WebControls.Label maxDateLabel;
         
         /// <summary>
-        /// manaCostTextBox control.
+        /// maxDateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox manaCostTextBox;
+        protected global::System.Web.UI.WebControls.TextBox maxDateTextBox;
         
         /// <summary>
-        /// manaCostRequiredFieldValidator control.
+        /// descriptionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator manaCostRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.Label descriptionLabel;
         
         /// <summary>
-        /// rarityLabel control.
+        /// descriptionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label rarityLabel;
+        protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
         
         /// <summary>
-        /// raritiesDropDownList control.
+        /// deckGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList raritiesDropDownList;
+        protected global::System.Web.UI.WebControls.GridView deckGridView;
         
         /// <summary>
-        /// cardimageLabel control.
+        /// searchButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cardimageLabel;
+        protected global::System.Web.UI.WebControls.Button searchButton;
         
         /// <summary>
-        /// cardImage control.
+        /// resetButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload cardImage;
-        
-        /// <summary>
-        /// insertButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button insertButton;
+        protected global::System.Web.UI.WebControls.Button resetButton;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FinalWebProject;
+using FinalWebProject.App_Services;
 using FinalWebProject.ClassTypes;
 using System;
 using System.Collections;
@@ -71,19 +72,9 @@ namespace FinalWebProject_App_Services
         }
         public DataSet GetAllCountries()
         {
-            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-            {
-
-                string query = "SELECT countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
-                OleDbCommand command = new OleDbCommand(query, conn);
-                conn.Open();
-                DataSet ds = new DataSet();
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
-                DataTable usersTable = new DataTable("CountriesList");
-                dataAdapter.Fill(usersTable);
-                ds.Tables.Add(usersTable);
-                return ds;
-            }
+            string query = "SELECT countryId,countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            OleDbCommand command = new OleDbCommand(query);
+            return new GeneralService().GetDataset(command, "CountriesList");
         }
     }
 }

@@ -10,16 +10,16 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="nameLabel" runat="server" Text="Deck name:"></asp:Label>
-            <asp:TextBox ID="nameTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="nameTextBox" runat="server" CssClass="Fields"></asp:TextBox>
             <asp:RequiredFieldValidator ID="nameRequiredFieldValidator" runat="server" ErrorMessage="Deck Name Required" ControlToValidate="nameTextBox" EnableClientScript="False"></asp:RequiredFieldValidator>
             <br />
             <br />
             <asp:Label ID="formatLabel" runat="server" Text="Format:"></asp:Label>
-            <asp:DropDownList ID="formatsDropDownList" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="formatsDropDownList" runat="server" CssClass="Fields"></asp:DropDownList>
             <br />
             <br />
             <asp:Label ID="descriptionLabel" runat="server" Text="Description:"></asp:Label>
-            <asp:TextBox ID="descriptionTextBox" TextMode="MultiLine" runat="server"></asp:TextBox>
+            <asp:TextBox ID="descriptionTextBox" TextMode="MultiLine" runat="server" CssClass="Fields"></asp:TextBox>
             <br />
         </div>
         <asp:Button ID="insertButton" runat="server" OnClick="OnInsert" Text="Insert" />

@@ -10,7 +10,7 @@
 namespace FinalWebProject.App_Aspx {
     
     
-    public partial class CardsInsert {
+    public partial class CardsGridView {
         
         /// <summary>
         /// form1 control.
@@ -31,22 +31,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.Label nameLabel;
         
         /// <summary>
-        /// cardNameTextBox control.
+        /// nameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNameTextBox;
-        
-        /// <summary>
-        /// cardNameRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator cardNameRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.TextBox nameTextBox;
         
         /// <summary>
         /// abilityLabel control.
@@ -67,15 +58,6 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.TextBox abilityTextBox;
         
         /// <summary>
-        /// abilityRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator abilityRequiredFieldValidator;
-        
-        /// <summary>
         /// manaCostLabel control.
         /// </summary>
         /// <remarks>
@@ -94,15 +76,6 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.TextBox manaCostTextBox;
         
         /// <summary>
-        /// manaCostRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator manaCostRequiredFieldValidator;
-        
-        /// <summary>
         /// rarityLabel control.
         /// </summary>
         /// <remarks>
@@ -112,39 +85,39 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.Label rarityLabel;
         
         /// <summary>
-        /// raritiesDropDownList control.
+        /// rarityDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList raritiesDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList rarityDropDownList;
         
         /// <summary>
-        /// cardimageLabel control.
+        /// magicCardsGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cardimageLabel;
+        protected global::System.Web.UI.WebControls.GridView magicCardsGridView;
         
         /// <summary>
-        /// cardImage control.
+        /// searchButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload cardImage;
+        protected global::System.Web.UI.WebControls.Button searchButton;
         
         /// <summary>
-        /// insertButton control.
+        /// resetButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button insertButton;
+        protected global::System.Web.UI.WebControls.Button resetButton;
     }
 }

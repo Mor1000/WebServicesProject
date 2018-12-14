@@ -34,21 +34,87 @@ namespace FinalWebProject.App_Services
                 return command.ExecuteNonQuery();//executing the query. the method returns the number of lines inserted.
             }
         }
+        public DataSet GetDecksTable()
+        {
+            string query = "SELECT* FROM Decks";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            OleDbCommand command = new OleDbCommand(query);
+            return new GeneralService().GetDataset(command, "Decks");
+        }
         public DataSet GetAllFormats()
         {
-            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-            {
+            string query = "SELECT formatId,formatName FROM Formats";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            OleDbCommand command = new OleDbCommand(query);
+            return new GeneralService().GetDataset(command, "Formats");
+        }
+        public DataSet GetAllDeckNames()
+        {
+            string query = "SELECT deckId,deckName FROM Decks";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            OleDbCommand command = new OleDbCommand(query);
+            return new GeneralService().GetDataset(command, "Decks");
+        }
+        public DataSet GetSelectedDecks(string minDate, string maxDate)
+        {
 
-                string query = "SELECT formatName FROM Formats";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
-                OleDbCommand command = new OleDbCommand(query, conn);
-                conn.Open();
-                DataSet ds = new DataSet();
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
-                DataTable usersTable = new DataTable("Formats");
-                dataAdapter.Fill(usersTable);
-                ds.Tables.Add(usersTable);
-                return ds;
+            int count = 0;
+            string query = "SELECT* FROM Decks WHERE "; //WHERE cardName like @card_name AND cardAbility like @card_ability AND cardManaCost=@mana_cost AND cardRarity=@card_rarity";
+            OleDbCommand command = new OleDbCommand();
+
+            if (deckDetails.deckName != "None")
+            {
+                query += "deckName=@deck_name";
+                count++;
+                command.Parameters.AddWithValue("@deck_name", deckDetails.deckName);
             }
+            if (deckDetails.deckFormat !=-1)
+            {
+                if (count > 0)
+                    query += " AND ";
+                query += "deckFormat=@deck_format";
+                count++;
+                command.Parameters.AddWithValue("@deck_format", deckDetails.deckFormat);
+            }
+            if (maxDate != "" && minDate != "")
+            {
+                if (count > 0)
+                    query += " AND ";
+                query += "deckCreationDate between @min_date And @max_date";
+                count++;
+                command.Parameters.AddWithValue("@min_date", minDate);
+                command.Parameters.AddWithValue("@max_date", maxDate);
+
+            }
+            else if (maxDate != "")
+            {
+                if (count > 0)
+                    query += " AND ";
+                query += "deckCreationDate<=@max_date";
+                count++;
+                command.Parameters.AddWithValue("@max_date", maxDate);
+            }
+            else if (minDate != "")
+            {
+                if (count > 0)
+                    query += " AND ";
+                query += "deckCreationDate>=@min_date";
+                count++;
+                command.Parameters.AddWithValue("@min_date", minDate);
+            }
+
+            if (deckDetails.deckDescription != "")
+            {
+                if (count > 0)
+                    query += " AND ";
+                query += "deckDescription like @deck_description";
+                count++;
+                command.Parameters.AddWithValue("@deck_description", deckDetails.deckDescription + "%");
+            }
+            DataSet ds = null;
+            if (count > 0)
+            {
+                command.CommandText = query;
+                ds = new GeneralService().GetDataset(command, "Decks");
+            }
+            return ds;
         }
     }
 }

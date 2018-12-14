@@ -1,0 +1,20 @@
+﻿body {
+    background-color:burlywood;
+    padding-top:50px;
+}
+.Labels{
+    padding:333333333333px;
+    color:forestgreen;
+    margin-left:30px;
+    font-size:17px;
+}
+.Fields {
+    position:absolute;
+    left:1648px;
+}
+
+.Validators {
+    position:absolute;
+    left:400px;
+    width:140px;
+}
