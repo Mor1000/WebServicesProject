@@ -109,5 +109,34 @@ namespace FinalWebProject_App_Services
             }
             return ds;
         }
+        public DataSet GetCardsWithRarities()
+        {
+            using(OleDbConnection conn=new OleDbConnection(Connection.GetConnectionString()))
+            {
+                DataSet ds = new DataSet();
+                OleDbCommand command = new OleDbCommand("SELECT* FROM AllMagicCards",conn);
+                OleDbDataAdapter adapterCards = new OleDbDataAdapter(command);
+                DataTable cardsTable = new DataTable("AllMagicCards");
+                adapterCards.Fill(cardsTable);
+                command = new OleDbCommand("SELECT* FROM Rarities",conn);
+                adapterCards = new OleDbDataAdapter(command);
+                DataTable raritiesTable = new DataTable("Rarities");
+                adapterCards.Fill(raritiesTable);
+                ds.Tables.Add(cardsTable);
+                ds.Tables.Add(raritiesTable);
+                ds.Tables["AllMagicCards"].PrimaryKey = new DataColumn[] { ds.Tables["AllMagicCards"].Columns["cardId"] };
+                ds.Tables["Rarities"].PrimaryKey = new DataColumn[] {ds.Tables["Rarities"].Columns["rarityId"] };
+                DataRelation cardsRel = new DataRelation("CardsRel", ds.Tables["Rarities"].Columns["rarityId"], ds.Tables["AllMagicCards"].Columns["cardRarity"]);
+                ds.Relations.Add(cardsRel);
+                ds.Tables["AllMagicCards"].Columns.Add("rarityCardName");
+                DataRow temp;
+                foreach (DataRow row in ds.Tables["AllMagicCards"].Rows)
+                {
+                    temp = row.GetParentRow("CardsRel");
+                    row["rarityCardName"] = temp["rarityName"];
+                }
+                return ds;
+            }
+        }
     }
 }

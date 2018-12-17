@@ -25,8 +25,8 @@
                 <asp:BoundField DataField="cardName" HeaderText="Card Name" />
                 <asp:BoundField DataField="cardAbility" HeaderText="Card Ability" />
                 <asp:BoundField DataField="cardManaCost" HeaderText="Card Mana Cost" />
-                <asp:BoundField DataField="cardRarity" HeaderText="Card Rarity" />
-
+                <asp:BoundField DataField="cardRarity" Visible="false" HeaderText="Card Rarity" />
+                <asp:BoundField DataField="rarityCardName" HeaderText="Card Rarity Name" />
                 <asp:TemplateField HeaderText="Card Image">
                     <ItemTemplate>
                         <asp:Image Height="70px" Width="70px" runat="server" ImageUrl='<%# Bind("cardImage") %>' AlternateText="Image not found" ID="cardImage" />

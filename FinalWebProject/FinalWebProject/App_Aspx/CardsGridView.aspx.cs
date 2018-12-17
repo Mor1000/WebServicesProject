@@ -49,7 +49,7 @@ namespace FinalWebProject.App_Aspx
         }
         private void ShowCardsTable()
         {
-            cards = cardsService.GetCardsTable();
+            cards = cardsService.GetCardsWithRarities();
             magicCardsGridView.DataSource = cards;
             magicCardsGridView.DataBind();
         }

@@ -76,6 +76,7 @@
     <Content Include="App_Aspx\FormatsInsert.aspx" />
     <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Aspx\Register.aspx" />
+    <Content Include="App_Aspx\UserCardsGridView.aspx" />
     <Content Include="App_Aspx\UserCardsInsert.aspx" />
     <Content Include="ClosedConnectionSample.aspx" />
     <Content Include="CSS\CardsInsertStyle.css" />
@@ -164,6 +165,13 @@
     </Compile>
     <Compile Include="App_Aspx\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\UserCardsGridView.aspx.cs">
+      <DependentUpon>UserCardsGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\UserCardsGridView.aspx.designer.cs">
+      <DependentUpon>UserCardsGridView.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\UserCardsInsert.aspx.cs">
       <DependentUpon>UserCardsInsert.aspx</DependentUpon>
