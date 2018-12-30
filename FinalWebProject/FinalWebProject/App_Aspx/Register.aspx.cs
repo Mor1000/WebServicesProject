@@ -49,26 +49,24 @@ namespace FinalWebProject.App_Aspx
         {
             try
             {
-                UserType user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, int.Parse(countriesDropDownList.SelectedValue), false, arenaNameTextBox.Text);
-                us = new UserService(user);
-                if (!us.IsAlreadyExistsUser())
+                /*loading all the validators from the "signUp" validation group
+                 * and checking if they are all valid.*/
+                if (IsValid)
                 {
+                    UserType user = new UserType(userTextBox.Text, passwordTextBox.Text, emailTextBox.Text, birthDateTextBox.Text, int.Parse(countriesDropDownList.SelectedValue), false, arenaNameTextBox.Text);
+                    us = new UserService(user);
+                    if (us.IsAlreadyExistsUser())
+                        Response.Write("<script> alert('User already taken');</script>");
+                    else if (us.IsAlreadyExistsEmail())
+                        Response.Write("<script> alert('Email already taken');</script>");
 
-                    /*loading all the validators from the "signUp" validation group
-                     * and checking if they are all valid.*/
-                    if (IsValid)
+                    else if (us.SignUp() > 0)
                     {
-                        //The database connection in the using block will be automatically closed in any event.      
-
-                        if (us.SignUp() > 0)
-                        {
-                            Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
-                            Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
-                        }
+                        Response.Write("<script> alert('Successfuly registered');</script>"); //writing in a popup window message.
+                        Response.Redirect("~/App_Aspx/Login.aspx"); //switching to the login page.
                     }
                 }
-                else
-                    Response.Write("<script> alert('User already taken');</script>");
+
             }
             catch (OleDbException ex)
             {
@@ -92,16 +90,16 @@ namespace FinalWebProject.App_Aspx
             args.IsValid = args.Value.Length >= 5;
 
         }
-    
+
         private void AddCountries()
         {
             try
             {
                 UserService userServices = new UserService();
                 DataSet usersDataSet = userServices.GetAllCountries();
-                Utilities.AddToDropDownList(usersDataSet,countriesDropDownList,"CountriesList","countryName","countryId");
+                Utilities.AddToDropDownList(usersDataSet, countriesDropDownList, "CountriesList", "countryName", "countryId");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.StackTrace);
             }

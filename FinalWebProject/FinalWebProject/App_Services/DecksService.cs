@@ -65,7 +65,7 @@ namespace FinalWebProject.App_Services
                 count++;
                 command.Parameters.AddWithValue("@deck_name", deckDetails.deckName);
             }
-            if (deckDetails.deckFormat !=-1)
+            if (deckDetails.deckFormat != -1)
             {
                 if (count > 0)
                     query += " AND ";
@@ -100,14 +100,7 @@ namespace FinalWebProject.App_Services
                 command.Parameters.AddWithValue("@min_date", minDate);
             }
 
-            if (deckDetails.deckDescription != "")
-            {
-                if (count > 0)
-                    query += " AND ";
-                query += "deckDescription like @deck_description";
-                count++;
-                command.Parameters.AddWithValue("@deck_description", deckDetails.deckDescription + "%");
-            }
+         
             DataSet ds = null;
             if (count > 0)
             {
@@ -115,6 +108,13 @@ namespace FinalWebProject.App_Services
                 ds = new GeneralService().GetDataset(command, "Decks");
             }
             return ds;
+        }
+        public bool deckAlreadyExists()
+        {
+            string query = "SELECT deckName FROM Decks WHERE deckName=@deck_name";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@deck_name", deckDetails.deckName);
+            return new GeneralService().nameAlreadyExists(command);
         }
     }
 }

@@ -67,22 +67,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Aspx\CardAttributes.aspx" />
-    <Content Include="App_Aspx\CardsColorInsert.aspx" />
     <Content Include="App_Aspx\CardsGridView.aspx" />
     <Content Include="App_Aspx\CardsInsert.aspx" />
-    <Content Include="App_Aspx\CardsKindsInsert.aspx" />
     <Content Include="App_Aspx\DecksGridView.aspx" />
     <Content Include="App_Aspx\DecksInsert.aspx" />
     <Content Include="App_Aspx\FormatsInsert.aspx" />
     <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Aspx\Register.aspx" />
+    <Content Include="App_Aspx\ShowCardColors.aspx" />
     <Content Include="App_Aspx\UserCardsGridView.aspx" />
     <Content Include="App_Aspx\UserCardsInsert.aspx" />
+    <Content Include="ColorsImage\black.png" />
+    <Content Include="ColorsImage\blue.png" />
     <Content Include="ClosedConnectionSample.aspx" />
+    <Content Include="CSS\CardsGridStyle.css" />
     <Content Include="CSS\CardsInsertStyle.css" />
     <Content Include="CSS\LoginStyle.css" />
+    <Content Include="ColorsImage\green.png" />
     <Content Include="GridView sample.aspx" />
+    <Content Include="magicColors.png" />
     <Content Include="packages.config" />
+    <Content Include="ColorsImage\white.png" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -93,6 +98,7 @@
   <ItemGroup>
     <Content Include="App_Data\projectDatabase1.accdb" />
     <Content Include="CSS\RegisterStyle.css" />
+    <Content Include="ColorsImage\red.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,13 +108,6 @@
     </Compile>
     <Compile Include="App_Aspx\CardAttributes.aspx.designer.cs">
       <DependentUpon>CardAttributes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Aspx\CardsColorInsert.aspx.cs">
-      <DependentUpon>CardsColorInsert.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Aspx\CardsColorInsert.aspx.designer.cs">
-      <DependentUpon>CardsColorInsert.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\CardsGridView.aspx.cs">
       <DependentUpon>CardsGridView.aspx</DependentUpon>
@@ -123,13 +122,6 @@
     </Compile>
     <Compile Include="App_Aspx\CardsInsert.aspx.designer.cs">
       <DependentUpon>CardsInsert.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Aspx\CardsKindsInsert.aspx.cs">
-      <DependentUpon>CardsKindsInsert.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Aspx\CardsKindsInsert.aspx.designer.cs">
-      <DependentUpon>CardsKindsInsert.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\DecksGridView.aspx.cs">
       <DependentUpon>DecksGridView.aspx</DependentUpon>
@@ -165,6 +157,13 @@
     </Compile>
     <Compile Include="App_Aspx\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\ShowCardColors.aspx.cs">
+      <DependentUpon>ShowCardColors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\ShowCardColors.aspx.designer.cs">
+      <DependentUpon>ShowCardColors.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\UserCardsGridView.aspx.cs">
       <DependentUpon>UserCardsGridView.aspx</DependentUpon>

@@ -27,17 +27,17 @@ namespace FinalWebProject_App_Services
         }
         public bool IsAlreadyExistsUser()
         {
-            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
-            {
-
-                string query = "SELECT username, userEmail FROM Users WHERE username=@user_name OR userEmail=@email";
-                OleDbCommand command = new OleDbCommand(query, conn);
-                command.Parameters.AddWithValue("@user_name", userDetails.username);
-                command.Parameters.AddWithValue("@user_email", userDetails.email);
-                conn.Open();
-                OleDbDataReader reader = command.ExecuteReader();
-                return reader.Read();
-            }
+            string query = "SELECT username FROM Users WHERE username=@user_name";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@user_name", userDetails.username);
+            return new GeneralService().nameAlreadyExists(command); 
+        }
+        public bool IsAlreadyExistsEmail()
+        {
+            string query = "SELECT userEmail FROM Users WHERE userEmail=@user_email";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@user_email", userDetails.email);
+            return new GeneralService().nameAlreadyExists(command);
         }
         public int SignUp()
         {

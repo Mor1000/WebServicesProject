@@ -5,14 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-<%--    <link rel="stylesheet" href="../CSS/CardsInsertStyle.css" />--%>
+    <%--    <link rel="stylesheet" href="../CSS/CardsInsertStyle.css" />--%>
+    <style type="text/css">
+        .auto-style1 {
+            margin-top: 0px;
+        }
+    </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Magic Insert"></asp:Label>
+            <br />
             <asp:Label ID="nameLabel" runat="server" Text="Card name:" CssClass="Labels"></asp:Label>
-            <asp:TextBox ID="cardNameTextBox" runat="server"  Height="20px" CssClass="Fields"></asp:TextBox>
+            <asp:TextBox ID="cardNameTextBox" runat="server" Height="20px" CssClass="Fields"></asp:TextBox>
             <asp:RequiredFieldValidator ID="cardNameRequiredFieldValidator" runat="server" ErrorMessage="card name required" ControlToValidate="cardNameTextBox" EnableClientScript="False" CssClass="auto-style1"></asp:RequiredFieldValidator>
             <br />
             <br />
@@ -29,15 +36,22 @@
             <asp:Label ID="rarityLabel" runat="server" Text="Rarity:" CssClass="Labels"></asp:Label>
             <asp:DropDownList ID="raritiesDropDownList" runat="server" CssClass="Fields"></asp:DropDownList>
             <br />
+            <asp:Label ID="kindLabel" runat="server" Text="Type:" CssClass="Labels"></asp:Label>
+            <asp:DropDownList ID="kindDropDownList" runat="server" CssClass="Fields"></asp:DropDownList>
             <br />
             <asp:Label ID="cardimageLabel" runat="server" Text="Image:" CssClass="Labels"></asp:Label>
             <asp:FileUpload ID="cardImage" runat="server" CssClass="Fields" />
             <br />
             <br />
-            <asp:Button ID="insertButton" runat="server" Text="Insert Card"
-                OnClick="insertClick" />
+            <asp:CheckBoxList ID="colorsList" runat="server" DataSourceID="ColorsDs" DataTextField="colorName" DataValueField="colorId" OnDataBound="OnColorBound">
+            </asp:CheckBoxList>
+            <asp:SqlDataSource ID="ColorsDs" runat="server" ConnectionString="<%$ ConnectionStrings:DBconnection %>" ProviderName="<%$ ConnectionStrings:DBconnection.ProviderName %>" SelectCommand="SELECT [colorId], [colorName] FROM [Colors]"></asp:SqlDataSource>
             <br />
         </div>
+        <p>
+            <asp:Button ID="insertButton" runat="server" Text="Insert Card"
+                OnClick="insertClick" />
+        </p>
     </form>
 </body>
 </html>

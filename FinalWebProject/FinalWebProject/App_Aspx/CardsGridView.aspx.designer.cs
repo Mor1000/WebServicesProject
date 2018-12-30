@@ -94,6 +94,24 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.DropDownList rarityDropDownList;
         
         /// <summary>
+        /// colorsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList colorsList;
+        
+        /// <summary>
+        /// ColorsDs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ColorsDs;
+        
+        /// <summary>
         /// magicCardsGridView control.
         /// </summary>
         /// <remarks>

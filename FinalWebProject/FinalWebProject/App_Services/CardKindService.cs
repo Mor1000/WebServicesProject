@@ -34,7 +34,7 @@ namespace FinalWebProject.App_Services
         }
         public DataSet GetAllKinds()
         {
-                string query = "SELECT kindName FROM CardKinds";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+                string query = "SELECT kindId,kindName FROM CardKinds";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
                 OleDbCommand command = new OleDbCommand(query);
                 return new GeneralService().GetDataset(command, "CardKinds");
         }

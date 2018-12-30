@@ -31,5 +31,15 @@ namespace FinalWebProject.App_Services
                 return ds;
             }
         }
+        public bool nameAlreadyExists(OleDbCommand command)
+        {
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
+                command.Connection = conn;
+                conn.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                return reader.Read();
+            }
+        }
     }
 }

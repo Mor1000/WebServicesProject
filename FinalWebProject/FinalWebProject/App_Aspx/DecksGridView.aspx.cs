@@ -41,7 +41,7 @@ namespace FinalWebProject.App_Aspx
             int formatId = -1;
             if (formatDropDownList.SelectedValue != "None")
                 formatId = int.Parse(formatDropDownList.SelectedValue);
-                DeckType deck = new DeckType(nameDropDownList.SelectedItem.Text,formatId, "", descriptionTextBox.Text);
+                DeckType deck = new DeckType(nameDropDownList.SelectedItem.Text,formatId, "","");
             DecksService service = new DecksService(deck);
             DataSet deckSelected = service.GetSelectedDecks(minDateTextBox.Text, maxDateTextBox.Text);
             if (deckSelected != null)

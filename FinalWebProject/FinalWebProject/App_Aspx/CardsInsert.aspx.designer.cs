@@ -22,6 +22,15 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// nameLabel control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,24 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.DropDownList raritiesDropDownList;
         
         /// <summary>
+        /// kindLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label kindLabel;
+        
+        /// <summary>
+        /// kindDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList kindDropDownList;
+        
+        /// <summary>
         /// cardimageLabel control.
         /// </summary>
         /// <remarks>
@@ -137,6 +164,24 @@ namespace FinalWebProject.App_Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload cardImage;
+        
+        /// <summary>
+        /// colorsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList colorsList;
+        
+        /// <summary>
+        /// ColorsDs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ColorsDs;
         
         /// <summary>
         /// insertButton control.

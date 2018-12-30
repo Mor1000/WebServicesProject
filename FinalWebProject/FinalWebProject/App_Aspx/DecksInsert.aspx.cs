@@ -27,14 +27,19 @@ namespace FinalWebProject.App_Aspx
                 {
                     DeckType deck = new DeckType(nameTextBox.Text, int.Parse(formatsDropDownList.SelectedValue), DateTime.Now.ToShortDateString(), descriptionTextBox.Text);
                     DecksService insertService = new DecksService(deck);
-                    if (insertService.InsertDeck() > 0)
+                    if (!insertService.deckAlreadyExists())
                     {
-                        Response.Write("<script>alert('Successfully inserted');</script>");
+                        if (insertService.InsertDeck() > 0)
+                        {
+                            Response.Write("<script>alert('Successfully inserted');</script>");
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Insertion failed');</script>");
+                        }
                     }
                     else
-                    {
-                        Response.Write("<script>alert('Insertion failed');</script>");
-                    }
+                        Response.Write("<script>alert('deck already exists');</script>");
 
                 }
             }
