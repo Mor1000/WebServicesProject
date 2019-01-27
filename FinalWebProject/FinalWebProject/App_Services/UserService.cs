@@ -72,7 +72,7 @@ namespace FinalWebProject_App_Services
         }
         public DataSet GetAllCountries()
         {
-            string query = "SELECT countryId,countryName FROM CountriesList";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            string query = "SELECT* FROM CountriesList Where blocked=false";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
             OleDbCommand command = new OleDbCommand(query);
             return new GeneralService().GetDataset(command, "CountriesList");
         }

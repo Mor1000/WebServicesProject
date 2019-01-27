@@ -103,13 +103,40 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.CheckBoxList colorsList;
         
         /// <summary>
-        /// ColorsDs control.
+        /// colorsDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ColorsDs;
+        protected global::System.Web.UI.WebControls.AccessDataSource colorsDataSource;
+        
+        /// <summary>
+        /// kindLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label kindLabel;
+        
+        /// <summary>
+        /// kindsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList kindsList;
+        
+        /// <summary>
+        /// kindsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.AccessDataSource kindsDataSource;
         
         /// <summary>
         /// magicCardsGridView control.

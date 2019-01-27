@@ -42,9 +42,11 @@ namespace FinalWebProject.App_Services
         }
         public DataSet GetAllFormats()
         {
-            string query = "SELECT formatId,formatName FROM Formats";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
+            string query = "SELECT* FROM Formats";//This query is parameterized so that the user input will be checked only as one of the fields in the table.
             OleDbCommand command = new OleDbCommand(query);
-            return new GeneralService().GetDataset(command, "Formats");
+            DataSet ds = new GeneralService().GetDataset(command, "Formats");
+            ds.Tables["Formats"].PrimaryKey = new DataColumn[] { ds.Tables["Formats"].Columns["formatId"] };
+            return ds;
         }
         public DataSet GetAllDeckNames()
         {
@@ -100,7 +102,7 @@ namespace FinalWebProject.App_Services
                 command.Parameters.AddWithValue("@min_date", minDate);
             }
 
-         
+
             DataSet ds = null;
             if (count > 0)
             {
@@ -115,6 +117,69 @@ namespace FinalWebProject.App_Services
             OleDbCommand command = new OleDbCommand(query);
             command.Parameters.AddWithValue("@deck_name", deckDetails.deckName);
             return new GeneralService().nameAlreadyExists(command);
+        }
+        public int UpdateTableRow(int formatId, string formatName)
+        {
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
+                string query = "UPDATE Formats SET formatName=@format_name WHERE formatId=@format_id";
+                OleDbCommand command = new OleDbCommand(query, conn);
+                command.Parameters.AddWithValue("@format_name", formatName);
+                command.Parameters.AddWithValue("@format_id", formatId);
+                conn.Open();
+                return command.ExecuteNonQuery();
+            }
+        }
+        public bool formatAlreadyExists(int formatId, string formatName)
+        {
+            string query = "SELECT formatId, formatName FROM Formats WHERE formatId<>@fotmat_id AND formatName=@format_name";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@fotmat_id", formatId);
+            command.Parameters.AddWithValue("@format_name", formatName);
+            return new GeneralService().nameAlreadyExists(command);
+        }
+        public bool cardAlreadyInDeck(int cardId)
+        {
+            string query = "SELECT deckId FROM DeckCards WHERE cardID=@card_id";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@card_id", cardId);
+            return new GeneralService().nameAlreadyExists(command);
+        }
+        public bool FormatInDeck(int formatId)
+        {
+            string query = "SELECT deckId FROM Decks WHERE deckFormat=@deck_format";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@deck_format", formatId);
+            return new GeneralService().nameAlreadyExists(command);
+        }
+        public int DeleteFormat(int formatId)
+        {
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
+                string query = "DELETE FROM Formats WHERE formatId=@format_id";
+                OleDbCommand command = new OleDbCommand(query, conn);
+                command.Parameters.AddWithValue("@format_id", formatId);
+                conn.Open();
+                return command.ExecuteNonQuery();
+            }
+        }
+        public int UnAbleCard(int formatId)
+        {
+            using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))
+            {
+                string query = "UPDATE Formats SET notValid=true WHERE formatId=@format_id";
+                OleDbCommand command = new OleDbCommand(query, conn);
+                command.Parameters.AddWithValue("@format_id", formatId);
+                conn.Open();
+                int rowUpdated = command.ExecuteNonQuery();
+                return rowUpdated;
+            }
+        }
+        public DataView GetSelectedFormat(DataSet ds, string formatName)
+        {
+            DataView dv = new DataView(ds.Tables["Formats"]);
+            dv.RowFilter = "formatName LIKE '" + formatName+"%'";
+            return dv;
         }
     }
 }

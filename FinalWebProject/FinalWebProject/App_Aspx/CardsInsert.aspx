@@ -37,15 +37,22 @@
             <asp:DropDownList ID="raritiesDropDownList" runat="server" CssClass="Fields"></asp:DropDownList>
             <br />
             <asp:Label ID="kindLabel" runat="server" Text="Type:" CssClass="Labels"></asp:Label>
-            <asp:DropDownList ID="kindDropDownList" runat="server" CssClass="Fields"></asp:DropDownList>
+            <asp:CheckBoxList ID="kindsList" runat="server" AutoPostBack="True" CssClass="Fields" DataSourceID="kindsDataSource" DataTextField="kindName" DataValueField="kindId" OnSelectedIndexChanged="KindSelectionChanged"></asp:CheckBoxList>
+            <asp:AccessDataSource ID="kindsDataSource" runat="server" DataFile="~/App_Data/projectDatabase1.accdb" SelectCommand="SELECT * FROM [CardKinds]"></asp:AccessDataSource>
+            <asp:Label ID="powerLabel" Visible="false" runat="server" Text="Power"></asp:Label>
+            <asp:TextBox ID="powerTextBox" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="toughnessLabel" Visible="false" runat="server" Text="toughnes"></asp:Label>
+            <asp:TextBox ID="toughnesBox" Visible="false" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="powerRequiredFieldValidator" runat="server" ErrorMessage="card power required" ControlToValidate="powerTextBox" EnableClientScript="False" CssClass="auto-style1"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="toughnessRequiredFieldValidator" runat="server" ErrorMessage="card toughness required" ControlToValidate="toughnesBox" EnableClientScript="False" CssClass="auto-style1"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="cardimageLabel" runat="server" Text="Image:" CssClass="Labels"></asp:Label>
             <asp:FileUpload ID="cardImage" runat="server" CssClass="Fields" />
             <br />
             <br />
-            <asp:CheckBoxList ID="colorsList" runat="server" DataSourceID="ColorsDs" DataTextField="colorName" DataValueField="colorId" OnDataBound="OnColorBound">
+            <asp:CheckBoxList ID="colorsList" runat="server" DataSourceID="accessDataColors" DataTextField="colorName" DataValueField="colorId" OnDataBound="OnColorBound">
             </asp:CheckBoxList>
-            <asp:SqlDataSource ID="ColorsDs" runat="server" ConnectionString="<%$ ConnectionStrings:DBconnection %>" ProviderName="<%$ ConnectionStrings:DBconnection.ProviderName %>" SelectCommand="SELECT [colorId], [colorName] FROM [Colors]"></asp:SqlDataSource>
+            <asp:AccessDataSource ID="accessDataColors" runat="server" DataFile="~/App_Data/projectDatabase1.accdb" SelectCommand="SELECT * FROM [Colors]"></asp:AccessDataSource>
             <br />
         </div>
         <p>

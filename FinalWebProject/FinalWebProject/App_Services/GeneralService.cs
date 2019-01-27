@@ -31,6 +31,15 @@ namespace FinalWebProject.App_Services
                 return ds;
             }
         }
+        public void createRelation(DataSet ds, string tableParentName, string tableParentChild,string parentId,string childId)
+        {
+            ds.Tables["Colors"].PrimaryKey = new DataColumn[] { ds.Tables[tableParentChild].Columns["colorId"] };
+            ds.Tables["CardsColor"].PrimaryKey = new DataColumn[] { ds.Tables["CardsColor"].Columns["cardName"], ds.Tables["CardsColor"].Columns["colorName"] };
+            DataColumn cardColorName = ds.Tables["CardsColor"].Columns["colorName"];
+            DataColumn colorNum = ds.Tables["Colors"].Columns["colorId"];
+            DataRelation colorCardRel = new DataRelation("CardColors", colorNum, cardColorName);
+            ds.Relations.Add(colorCardRel);
+        }
         public bool nameAlreadyExists(OleDbCommand command)
         {
             using (OleDbConnection conn = new OleDbConnection(Connection.GetConnectionString()))

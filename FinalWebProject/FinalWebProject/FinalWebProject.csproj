@@ -71,17 +71,21 @@
     <Content Include="App_Aspx\CardsInsert.aspx" />
     <Content Include="App_Aspx\DecksGridView.aspx" />
     <Content Include="App_Aspx\DecksInsert.aspx" />
+    <Content Include="App_Aspx\FormatsGridView.aspx" />
     <Content Include="App_Aspx\FormatsInsert.aspx" />
+    <Content Include="App_Aspx\FormatsPage.aspx" />
     <Content Include="App_Aspx\Login.aspx" />
     <Content Include="App_Aspx\Register.aspx" />
     <Content Include="App_Aspx\ShowCardColors.aspx" />
     <Content Include="App_Aspx\UserCardsGridView.aspx" />
     <Content Include="App_Aspx\UserCardsInsert.aspx" />
+    <Content Include="App_Aspx\UserHomePage.aspx" />
     <Content Include="ColorsImage\black.png" />
     <Content Include="ColorsImage\blue.png" />
     <Content Include="ClosedConnectionSample.aspx" />
     <Content Include="CSS\CardsGridStyle.css" />
     <Content Include="CSS\CardsInsertStyle.css" />
+    <Content Include="CSS\FormatsGridStyle.css" />
     <Content Include="CSS\LoginStyle.css" />
     <Content Include="ColorsImage\green.png" />
     <Content Include="GridView sample.aspx" />
@@ -137,12 +141,26 @@
     <Compile Include="App_Aspx\DecksInsert.aspx.designer.cs">
       <DependentUpon>DecksInsert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Aspx\FormatsGridView.aspx.cs">
+      <DependentUpon>FormatsGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\FormatsGridView.aspx.designer.cs">
+      <DependentUpon>FormatsGridView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Aspx\FormatsInsert.aspx.cs">
       <DependentUpon>FormatsInsert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Aspx\FormatsInsert.aspx.designer.cs">
       <DependentUpon>FormatsInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\FormatsPage.aspx.cs">
+      <DependentUpon>FormatsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\FormatsPage.aspx.designer.cs">
+      <DependentUpon>FormatsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Aspx\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -178,6 +196,13 @@
     </Compile>
     <Compile Include="App_Aspx\UserCardsInsert.aspx.designer.cs">
       <DependentUpon>UserCardsInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Aspx\UserHomePage.aspx.cs">
+      <DependentUpon>UserHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Aspx\UserHomePage.aspx.designer.cs">
+      <DependentUpon>UserHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Services\CardColorService.cs" />
     <Compile Include="App_Services\CardKindService.cs" />

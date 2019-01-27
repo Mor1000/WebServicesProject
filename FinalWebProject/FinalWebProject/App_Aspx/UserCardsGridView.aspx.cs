@@ -43,12 +43,20 @@ namespace FinalWebProject.App_Aspx
             {
                 usersCardsGridView.DataSource = userCards;
                 usersCardsGridView.DataBind();
+                Cache["UserCards"] = userCards;
             }
         }
 
         protected void OnReset(object sender, EventArgs e)
         {
             ResetTable();
+        }
+
+        protected void OnPaging(object sender, GridViewPageEventArgs e)
+        {
+            usersCardsGridView.PageIndex = e.NewPageIndex;
+            usersCardsGridView.DataSource = (DataSet)Cache["UserCards"];
+            usersCardsGridView.DataBind();
         }
     }
 }

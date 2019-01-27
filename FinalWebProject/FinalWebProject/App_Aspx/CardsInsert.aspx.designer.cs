@@ -139,13 +139,76 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.Label kindLabel;
         
         /// <summary>
-        /// kindDropDownList control.
+        /// kindsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList kindDropDownList;
+        protected global::System.Web.UI.WebControls.CheckBoxList kindsList;
+        
+        /// <summary>
+        /// kindsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.AccessDataSource kindsDataSource;
+        
+        /// <summary>
+        /// powerLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label powerLabel;
+        
+        /// <summary>
+        /// powerTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox powerTextBox;
+        
+        /// <summary>
+        /// toughnessLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toughnessLabel;
+        
+        /// <summary>
+        /// toughnesBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox toughnesBox;
+        
+        /// <summary>
+        /// powerRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator powerRequiredFieldValidator;
+        
+        /// <summary>
+        /// toughnessRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator toughnessRequiredFieldValidator;
         
         /// <summary>
         /// cardimageLabel control.
@@ -175,13 +238,13 @@ namespace FinalWebProject.App_Aspx {
         protected global::System.Web.UI.WebControls.CheckBoxList colorsList;
         
         /// <summary>
-        /// ColorsDs control.
+        /// accessDataColors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ColorsDs;
+        protected global::System.Web.UI.WebControls.AccessDataSource accessDataColors;
         
         /// <summary>
         /// insertButton control.

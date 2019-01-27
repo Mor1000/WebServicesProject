@@ -17,7 +17,7 @@
             </asp:DropDownList>
             <asp:Label ID="amountLabel" runat="server" Text="Amount:"></asp:Label>
             <asp:TextBox ID="amountTextBox" runat="server" TextMode="Number"></asp:TextBox>
-            <asp:GridView ID="usersCardsGridView" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="usersCardsGridView" AllowPaging="true" PageSize="4" runat="server" AutoGenerateColumns="False" OnPageIndexChanging="OnPaging">
                 <Columns>
                     <asp:BoundField DataField="userName" HeaderText="User" />
                     <asp:BoundField DataField="userCard" HeaderText="Card" />

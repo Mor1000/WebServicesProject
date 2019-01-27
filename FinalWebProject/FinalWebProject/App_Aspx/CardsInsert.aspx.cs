@@ -20,7 +20,6 @@ namespace FinalWebProject.App_Aspx
             if (!IsPostBack)
             {
                 Utilities.AddRarities(raritiesDropDownList);
-                AddKinds();
             }
         }
         protected void insertClick(object sender, EventArgs e)
@@ -53,13 +52,24 @@ namespace FinalWebProject.App_Aspx
                                         Response.Write("<script>alert('color insertion failed');</script>");
                                 }
                             }
-                            int kindId = int.Parse(kindDropDownList.SelectedValue);
-                            if (insertService.InsertKind(cardId, kindId) > 0)
-                                Response.Write("<script>alert('Kind insertion successful');</script>");
-                            else
-                                Response.Write("<script>alert('Kind insertion failed');</script>");
+                            foreach (ListItem item in kindsList.Items)
+                            {
+                                if (item.Selected)
+                                {
+                                    if (insertService.InsertKind(cardId, int.Parse(item.Value)) != 0)
+                                        Response.Write("<script>alert('color successfully inserted');</script>");
+                                    else
+                                        Response.Write("<script>alert('color insertion failed');</script>");
+                                }
+                            }
+                            if (kindsList.Items.FindByText("creature").Selected)
+                                if (insertService.InsertAttributes(cardId,int.Parse(powerTextBox.Text),int.Parse(toughnesBox.Text))>0)
+                                        Response.Write("<script>alert('color successfully inserted');</script>");
+                                    else
+                                        Response.Write("<script>alert('color insertion failed');</script>");
+                                }
 
-                        }
+                        
                         else
                         {
                             Response.Write("<script>alert('Insertion failed');</script>");
@@ -95,12 +105,30 @@ namespace FinalWebProject.App_Aspx
         {
             return string.Format("/ColorsImage/{0}.png", color);
         }
-        private void AddKinds()
-        {
-            CardKindService cardKindService = new CardKindService();
-            DataSet kindCardsDataSet = cardKindService.GetAllKinds();
-            Utilities.AddToDropDownList(kindCardsDataSet, kindDropDownList, "CardKinds", "kindName", "kindId");
 
+        protected void KindSelectionChanged(object sender, EventArgs e)
+        {
+            if (kindsList.Items.FindByText("creature").Selected)
+            {
+                powerLabel.Visible = true;
+                powerTextBox.Visible = true;
+                toughnessLabel.Visible = true;
+                toughnesBox.Visible = true;
+            }
+            else
+            {
+                powerLabel.Visible = false;
+                powerTextBox.Visible = false;
+                toughnessLabel.Visible = false;
+                toughnesBox.Visible = false;
+            }
         }
+        //private void AddKinds()
+        //{
+        //    CardKindService cardKindService = new CardKindService();
+        //    DataSet kindCardsDataSet = cardKindService.GetAllKinds();
+        //    Utilities.AddToDropDownList(kindCardsDataSet, kindDropDownList, "CardKinds", "kindName", "kindId");
+
+        //}
     }
 }

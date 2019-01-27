@@ -83,5 +83,12 @@ namespace FinalWebProject.App_Services
             }
             return ds;
         }
+        public bool userAlreadyAddedCard(int cardId)
+        {
+            string query = "SELECT userCard FROM UserCards WHERE userCard=@card_id";
+            OleDbCommand command = new OleDbCommand(query);
+            command.Parameters.AddWithValue("@card_id", cardId);
+            return new GeneralService().nameAlreadyExists(command);
+        }
     }
 }
